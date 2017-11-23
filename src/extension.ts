@@ -17,21 +17,23 @@ export function activate(context: ExtensionContext) {
     const config = workspace.getConfiguration('terminalTabs');
     const defaultTerminals = config.get<DefaultTerminal[]>('terminals');
 
-    defaultTerminals.forEach((terminal) => {
-        const {name, directory, command} = terminal;
-        const _terminal = new StatusBarTerminal(_terminalCounter++, name);
-        
-        if (directory) {
-            _terminal.sendCommand(`cd ${directory}`);
-        }
+    if (defaultTerminals) {
+        defaultTerminals.forEach((terminal) => {
+            const {name, directory, command} = terminal;
+            const _terminal = new StatusBarTerminal(_terminalCounter++, name);
+            
+            if (directory) {
+                _terminal.sendCommand(`cd ${directory}`);
+            }
 
-        if (command) {
-            _terminal.sendCommand(command);
-        }
+            if (command) {
+                _terminal.sendCommand(command);
+            }
 
-        _terminal.hide(); // it's not necessary to have the terminals open on creation
-        _terminals.push(_terminal);
-    });
+            _terminal.hide(); // it's not necessary to have the terminals open on creation
+            _terminals.push(_terminal);
+        });
+    }
 
     context.subscriptions.push(commands.registerCommand('terminalTabs.createTerminal', () => {
         if (_terminals.length >= MAX_TERMINALS) {
