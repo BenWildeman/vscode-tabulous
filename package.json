@@ -1,20 +1,20 @@
 {
-    "name": "terminal-tabs",
-    "displayName": "Terminal Tabs",
+    "name": "tabulous",
+    "displayName": "Tabulous - Terminal Tabs",
     "description": "Adds tabs for each terminal process to the status bar",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "preview": true,
-    "publisher": "Tyriar",
+    "publisher": "bwildeman",
     "icon": "images/icon.png",
     "bugs": {
-        "url": "https://github.com/Tyriar/vscode-terminal-tabs/issues"
+        "url": "https://github.com/NitroGhost/vscode-tabulous/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Tyriar/vscode-terminal-tabs"
+        "url": "https://github.com/NitroGhost/vscode-tabulous"
     },
     "engines": {
-        "vscode": "^1.6.0"
+        "vscode": "^1.16.0"
     },
     "categories": [
         "Other"
@@ -26,14 +26,14 @@
     "contributes": {
         "configuration": {
             "type": "object",
-            "title": "terminalTabs Configuration",
+            "title": "Tabulous Configuration",
             "properties": {
-                "terminalTabs.activeTabColor": {
+                "tabulous.activeTabColor": {
                     "type": "string",
                     "default": "yellow",
                     "description": "Active tab color. Must be a valid css color"
                 },
-                "terminalTabs.defaultTerminals": {
+                "tabulous.defaultTerminals": {
                     "type": "array",
                     "description": "Default terminals to open when VS Code starts",
                     "items": {
@@ -58,51 +58,51 @@
         },
         "commands": [
             {
-                "command": "terminalTabs.createTerminal",
+                "command": "tabulous.createTerminal",
                 "title": "Create terminal"
             },
             {
-                "command": "terminalTabs.createNamedTerminal",
+                "command": "tabulous.createNamedTerminal",
                 "title": "Create named terminal"
             },
             {
-                "command": "terminalTabs.showTerminal1",
+                "command": "tabulous.showTerminal1",
                 "title": "Show terminal #1"
             },
             {
-                "command": "terminalTabs.showTerminal2",
+                "command": "tabulous.showTerminal2",
                 "title": "Show terminal #2"
             },
             {
-                "command": "terminalTabs.showTerminal3",
+                "command": "tabulous.showTerminal3",
                 "title": "Show terminal #3"
             },
             {
-                "command": "terminalTabs.showTerminal4",
+                "command": "tabulous.showTerminal4",
                 "title": "Show terminal #4"
             },
             {
-                "command": "terminalTabs.showTerminal5",
+                "command": "tabulous.showTerminal5",
                 "title": "Show terminal #5"
             },
             {
-                "command": "terminalTabs.showTerminal6",
+                "command": "tabulous.showTerminal6",
                 "title": "Show terminal #6"
             },
             {
-                "command": "terminalTabs.showTerminal7",
+                "command": "tabulous.showTerminal7",
                 "title": "Show terminal #7"
             },
             {
-                "command": "terminalTabs.showTerminal8",
+                "command": "tabulous.showTerminal8",
                 "title": "Show terminal #8"
             },
             {
-                "command": "terminalTabs.showTerminal9",
+                "command": "tabulous.showTerminal9",
                 "title": "Show terminal #9"
             },
             {
-                "command": "terminalTabs.showTerminal10",
+                "command": "tabulous.showTerminal10",
                 "title": "Show terminal #10"
             }
         ]

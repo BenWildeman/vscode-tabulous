@@ -14,7 +14,7 @@ interface DefaultTerminal {
 export function activate(context: ExtensionContext) {
     // vscode loves to start a terminal if you previously had one or more open. get rid of it
     commands.executeCommand('workbench.action.terminal.kill');
-    const config = workspace.getConfiguration('terminalTabs');
+    const config = workspace.getConfiguration('tabulous');
     const defaultTerminals = config.get<DefaultTerminal[]>('defaultTerminals');
 
     if (defaultTerminals) {
@@ -35,7 +35,7 @@ export function activate(context: ExtensionContext) {
         });
     }
 
-    context.subscriptions.push(commands.registerCommand('terminalTabs.createTerminal', () => {
+    context.subscriptions.push(commands.registerCommand('tabulous.createTerminal', () => {
         if (_terminals.length >= MAX_TERMINALS) {
             window.showInformationMessage(`This extension does not support more than ${MAX_TERMINALS} terminals.`);
             return;
@@ -43,7 +43,7 @@ export function activate(context: ExtensionContext) {
         _terminals.push(new StatusBarTerminal(_terminalCounter++));
     }));
 
-    context.subscriptions.push(commands.registerCommand('terminalTabs.createNamedTerminal', () => {
+    context.subscriptions.push(commands.registerCommand('tabulous.createNamedTerminal', () => {
         window.showInputBox({
             placeHolder: 'Enter the name of the new terminal'
         }).then(name => {
@@ -56,7 +56,7 @@ export function activate(context: ExtensionContext) {
     }));
 
     for (let i = 1; i <= MAX_TERMINALS; i++) {
-        context.subscriptions.push(commands.registerCommand(`terminalTabs.showTerminal${i}`, (a) => {
+        context.subscriptions.push(commands.registerCommand(`tabulous.showTerminal${i}`, (a) => {
             _terminals.forEach((terminal, index) => {
                 // Toggle or mark terminal as hidden
                 index === (i - 1) ? terminal.toggle() : terminal.markHidden();

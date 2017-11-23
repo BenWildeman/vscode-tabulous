@@ -7,7 +7,7 @@ export class StatusBarTerminal {
     private _terminal: Terminal;
 
     constructor(terminalIndex: number, name?: string) {
-        this._config = workspace.getConfiguration('terminalTabs');
+        this._config = workspace.getConfiguration('tabulous');
         this._item = window.createStatusBarItem();
         this.setTerminalIndex(terminalIndex, name);
         this._item.show();
@@ -42,7 +42,7 @@ export class StatusBarTerminal {
 
     public setTerminalIndex(i: number, name?: string) {
         this._item.text = `$(terminal) ${name ? name : (i + 1)}`;
-        this._item.command = `terminalTabs.showTerminal${i + 1}`; 
+        this._item.command = `tabulous.showTerminal${i + 1}`; 
     }
 
     public hasTerminal(terminal: Terminal) {
