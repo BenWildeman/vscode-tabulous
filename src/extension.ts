@@ -15,7 +15,7 @@ export function activate(context: ExtensionContext) {
     // vscode loves to start a terminal if you previously had one or more open. get rid of it
     commands.executeCommand('workbench.action.terminal.kill');
     const config = workspace.getConfiguration('terminalTabs');
-    const defaultTerminals = config.get<DefaultTerminal[]>('terminals');
+    const defaultTerminals = config.get<DefaultTerminal[]>('defaultTerminals');
 
     if (defaultTerminals) {
         defaultTerminals.forEach((terminal) => {
