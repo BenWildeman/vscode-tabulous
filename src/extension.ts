@@ -1,11 +1,40 @@
 import { StatusBarTerminal } from './statusBarTerminal';
-import { ExtensionContext, commands, window, Terminal } from 'vscode';
+import { ExtensionContext, commands, window, workspace, Terminal } from 'vscode';
 
 const MAX_TERMINALS = 10;
 let _terminalCounter = 0;
 let _terminals: StatusBarTerminal[] = [];
 
+interface DefaultTerminal {
+    name?: string,
+    directory?: string,
+    command?: string
+}
+
 export function activate(context: ExtensionContext) {
+    // vscode loves to start a terminal if you previously had one or more open. get rid of it
+    commands.executeCommand('workbench.action.terminal.kill');
+    const config = workspace.getConfiguration('terminalTabs');
+    const defaultTerminals = config.get<DefaultTerminal[]>('defaultTerminals');
+
+    if (defaultTerminals) {
+        defaultTerminals.forEach((terminal) => {
+            const {name, directory, command} = terminal;
+            const _terminal = new StatusBarTerminal(_terminalCounter++, name);
+            
+            if (directory) {
+                _terminal.sendCommand(`cd ${directory}`);
+            }
+
+            if (command) {
+                _terminal.sendCommand(command);
+            }
+
+            _terminal.hide(); // it's not necessary to have the terminals open on creation
+            _terminals.push(_terminal);
+        });
+    }
+
     context.subscriptions.push(commands.registerCommand('terminalTabs.createTerminal', () => {
         if (_terminals.length >= MAX_TERMINALS) {
             window.showInformationMessage(`This extension does not support more than ${MAX_TERMINALS} terminals.`);
@@ -65,4 +94,7 @@ function onDidCloseTerminal(terminal: Terminal) {
 }
 
 export function deactivate() {
+    _terminals.forEach((terminal) => {
+        terminal.dispose();
+    });
 }

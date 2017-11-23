@@ -4,7 +4,7 @@ export class StatusBarTerminal {
     private _config: WorkspaceConfiguration;
     private _item: StatusBarItem;
     private _showing: boolean = false;
-    public _terminal: Terminal;
+    private _terminal: Terminal;
 
     constructor(terminalIndex: number, name?: string) {
         this._config = workspace.getConfiguration('terminalTabs');
@@ -47,6 +47,10 @@ export class StatusBarTerminal {
 
     public hasTerminal(terminal: Terminal) {
         return this._terminal === terminal;
+    }
+
+    public sendCommand(command: string) {
+        this._terminal.sendText(command);
     }
 
     public dispose() {
