@@ -20,8 +20,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:terminalTabs.createTerminal",
-        "onCommand:terminalTabs.createNamedTerminal"
+        "*"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -33,6 +32,27 @@
                     "type": "string",
                     "default": "yellow",
                     "description": "Active tab color. Must be a valid css color"
+                },
+                "terminalTabs.defaultTerminals": {
+                    "type": "array",
+                    "description": "Default terminals to open when VS Code starts",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Name of the terminal"
+                            },
+                            "directory": {
+                                "type": "string",
+                                "description": "Starting directory"
+                            },
+                            "command": {
+                                "type": "string",
+                                "description": "Starting command"
+                            }
+                        }
+                    }
                 }
             }
         },
