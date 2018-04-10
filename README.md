@@ -13,8 +13,6 @@ This extension provides the following extended functionality:
 * Provides full tab naming support. The original extension did not allow naming tabs, only giving a number to the tab
 * Some settings for customisation
 
-![Terminal tabs preview](images/preview.png)
-
 This extension provides the original commands that terminal-tabs provided, only renamed that can be keybound in your [keybindings.json](https://code.visualstudio.com/docs/customization/keybindings#_customizing-shortcuts) file:
 
 - `tabulous.createTerminal`: Creates a terminal with an icon
