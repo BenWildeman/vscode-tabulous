@@ -1,19 +1,20 @@
-import { StatusBarItem, WorkspaceConfiguration, Terminal, window, workspace } from 'vscode';
+import { StatusBarItem, WorkspaceConfiguration, Terminal, window, workspace } from "vscode";
 
 export class StatusBarTerminal {
-    private _config: WorkspaceConfiguration;
     private _item: StatusBarItem;
     private _showing: boolean = false;
     private _terminal: Terminal;
 
-    constructor(terminalIndex: number, name?: string) {
-        this._config = workspace.getConfiguration('tabulous');
+    constructor(terminalIndex: number, show: boolean, name?: string) {
         this._item = window.createStatusBarItem();
         this.setTerminalIndex(terminalIndex, name);
         this._item.show();
 
         this._terminal = window.createTerminal(name);
-        this.show();
+
+        if (show) {
+            this.show();
+        }
     }
 
     get name() {
@@ -21,8 +22,9 @@ export class StatusBarTerminal {
     }
 
     public show() {
+        const config = workspace.getConfiguration("tabulous");
         this._showing = true;
-        this._item.color = this._config.get('activeTabColor');
+        this._item.color = config.get("activeTabColor");
         this._terminal.show();
     }
 

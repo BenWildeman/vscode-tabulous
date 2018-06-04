@@ -59,51 +59,55 @@
         "commands": [
             {
                 "command": "tabulous.createTerminal",
-                "title": "Create terminal"
+                "title": "Tabulous: Create terminal"
             },
             {
                 "command": "tabulous.createNamedTerminal",
-                "title": "Create named terminal"
+                "title": "Tabulous: Create named terminal"
+            },
+            {
+                "command": "tabulous.reloadDefaultTerminals",
+                "title": "Tabulous: Reload default terminals"
             },
             {
                 "command": "tabulous.showTerminal1",
-                "title": "Show terminal #1"
+                "title": "Tabulous: Show terminal #1"
             },
             {
                 "command": "tabulous.showTerminal2",
-                "title": "Show terminal #2"
+                "title": "Tabulous: Show terminal #2"
             },
             {
                 "command": "tabulous.showTerminal3",
-                "title": "Show terminal #3"
+                "title": "Tabulous: Show terminal #3"
             },
             {
                 "command": "tabulous.showTerminal4",
-                "title": "Show terminal #4"
+                "title": "Tabulous: Show terminal #4"
             },
             {
                 "command": "tabulous.showTerminal5",
-                "title": "Show terminal #5"
+                "title": "Tabulous: Show terminal #5"
             },
             {
                 "command": "tabulous.showTerminal6",
-                "title": "Show terminal #6"
+                "title": "Tabulous: Show terminal #6"
             },
             {
                 "command": "tabulous.showTerminal7",
-                "title": "Show terminal #7"
+                "title": "Tabulous: Show terminal #7"
             },
             {
                 "command": "tabulous.showTerminal8",
-                "title": "Show terminal #8"
+                "title": "Tabulous: Show terminal #8"
             },
             {
                 "command": "tabulous.showTerminal9",
-                "title": "Show terminal #9"
+                "title": "Tabulous: Show terminal #9"
             },
             {
                 "command": "tabulous.showTerminal10",
-                "title": "Show terminal #10"
+                "title": "Tabulous: Show terminal #10"
             }
         ]
     },
