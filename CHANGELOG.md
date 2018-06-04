@@ -1,5 +1,9 @@
 # Tabulous Change Log
 
+## 0.3.1
+
+* Added changelog
+
 ## 0.3.0
 
 * Moved subscriptions into their own directory - cleans up extensions.ts
