@@ -19,6 +19,9 @@
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "terminal", "tabs", "terminal tabs"
+    ],
     "activationEvents": [
         "*"
     ],
