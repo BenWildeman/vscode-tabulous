@@ -51,8 +51,8 @@ export class StatusBarTerminal {
         return this._terminal === terminal;
     }
 
-    public sendCommand(command: string) {
-        this._terminal.sendText(command);
+    public sendCommand(command: string, execute: boolean = true) {
+        this._terminal.sendText(command, execute);
     }
 
     public dispose() {

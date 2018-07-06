@@ -53,6 +53,11 @@
                             "command": {
                                 "type": "string",
                                 "description": "Starting command"
+                            },
+                            "executeCommand": {
+                                "type": "boolean",
+                                "description": "Whether or not to execute command. Setting to false pretypes it for you without executing",
+                                "default": true
                             }
                         }
                     }

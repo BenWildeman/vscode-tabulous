@@ -7,7 +7,8 @@ export interface Common {
 }
 
 export interface DefaultTerminal {
-    name?: string,
-    directory?: string,
-    command?: string
+    name?: string;
+    directory?: string;
+    command?: string;
+    executeCommand?: boolean;
 }

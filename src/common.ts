@@ -11,7 +11,7 @@ const common: Common = {
 
 export function loadTerminals(defaultTerminals: DefaultTerminal[]) {
     defaultTerminals.forEach((terminal) => {
-        const {name, directory, command} = terminal;
+        const { name, directory, command, executeCommand = true } = terminal;
         const _terminal = new StatusBarTerminal(common.terminalCount++, false, name);
         
         if (directory) {
@@ -19,7 +19,7 @@ export function loadTerminals(defaultTerminals: DefaultTerminal[]) {
         }
 
         if (command) {
-            _terminal.sendCommand(command);
+            _terminal.sendCommand(command, executeCommand);
         }
 
         common.terminals.push(_terminal);

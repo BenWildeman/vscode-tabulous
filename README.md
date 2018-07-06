@@ -47,7 +47,8 @@ This extension provides the following settings:
 }, {
     "name": "App",
     "directory": "absolute/path/to/api",
-    "command": "npm start"
+    "command": "npm start",
+    "executeCommand": false
 }]
 ```
 
