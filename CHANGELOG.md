@@ -1,5 +1,8 @@
 # Tabulous Change Log
 
+## 0.4.0
+* Added executeCommand option for default terminals - Makes it possible to pretype the command when the default terminals are opened without actually executing them
+
 ## 0.3.1
 
 * Added changelog
