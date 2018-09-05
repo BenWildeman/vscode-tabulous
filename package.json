@@ -14,7 +14,7 @@
         "url": "https://github.com/NitroGhost/vscode-tabulous"
     },
     "engines": {
-        "vscode": "^1.16.0"
+        "vscode": "^1.23.0"
     },
     "categories": [
         "Other"
@@ -125,8 +125,8 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
+        "typescript": "^3.0.3",
+        "vscode": "^1.1.21",
         "mocha": "^2.3.3",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"

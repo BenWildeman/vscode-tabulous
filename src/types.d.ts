@@ -1,9 +1,10 @@
 import { StatusBarTerminal } from "./statusBarTerminal";
 
 export interface Common {
+    activeTerminal?: number;
     loaded: boolean;
     terminalCount: number;
-    terminals: StatusBarTerminal[];
+    terminals: Map<number, {terminalID: number, terminal: StatusBarTerminal}>;
 }
 
 export interface DefaultTerminal {

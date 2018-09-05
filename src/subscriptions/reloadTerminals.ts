@@ -1,10 +1,9 @@
 import { commands, window, workspace } from "vscode";
-import common, { loadTerminals, MAX_TERMINALS } from "../common";
-import { StatusBarTerminal } from "../statusBarTerminal";
+import common, { loadTerminals } from "../common";
 import { DefaultTerminal } from "../types";
 
 function load() {
-    if (common.terminals.length > 0) {
+    if (common.terminals.size > 0) {
         if (!common.loaded) {
             setImmediate(() => {
                 load()
@@ -27,9 +26,12 @@ export function reloadTerminals() {
 
         if (defaultTerminals.length) {
             common.loaded = false;
-            common.terminals.forEach((terminal) => {
+            common.terminals.forEach(({ terminal }) => {
                 terminal.dispose();
             });
+
+            common.terminalCount = 0;
+            common.terminals.clear();
 
             load();
         } else {

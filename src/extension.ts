@@ -1,6 +1,5 @@
-import { StatusBarTerminal } from "./statusBarTerminal";
 import { ExtensionContext, commands, window, workspace, Terminal } from "vscode";
-import { createTerminal, createNamedTerminal, onDidCloseTerminal, reloadTerminals, showTerminal } from "./subscriptions";
+import { createTerminal, createNamedTerminal, onDidCloseTerminal, onDidOpenTerminal, reloadTerminals, showTerminal } from "./subscriptions";
 import { DefaultTerminal } from "./types";
 import common, { MAX_TERMINALS, loadTerminals } from "./common";
 
@@ -20,6 +19,7 @@ export async function activate(context: ExtensionContext) {
         }
         
         context.subscriptions.push(window.onDidCloseTerminal(onDidCloseTerminal));
+        context.subscriptions.push((<any>window).onDidOpenTerminal(onDidOpenTerminal));
 
         if (defaultTerminals && defaultTerminals.length) {
             loadTerminals(defaultTerminals);
@@ -32,7 +32,7 @@ export async function activate(context: ExtensionContext) {
 }
 
 export function deactivate() {
-    common.terminals.forEach((terminal) => {
+    common.terminals.forEach(({ terminal }) => {
         terminal.dispose();
     });
 }

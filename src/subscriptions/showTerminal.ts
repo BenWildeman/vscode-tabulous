@@ -1,15 +1,14 @@
-import { commands, window, workspace } from "vscode";
+import { commands } from "vscode";
 import common from "../common";
-import { DefaultTerminal } from "../types";
 
 export function showTerminal(i: number) {
-    const config = workspace.getConfiguration("tabulous");
-    const defaultTerminals = config.get<DefaultTerminal[]>("defaultTerminals");
+    return commands.registerCommand(`tabulous.showTerminal${i}`, async () => {
+        const _terminal = Array.from(common.terminals.values())[i - 1].terminal;
+        const terminalID = await _terminal.processId;
 
-    return commands.registerCommand(`tabulous.showTerminal${i}`, (a) => {
-        common.terminals.forEach((terminal, index) => {
+        common.terminals.forEach(({ terminal }, id) => {
             // Toggle or mark terminal as hidden
-            index === (i - 1) ? terminal.toggle() : terminal.markHidden();
+           id === terminalID ? terminal.toggle() : terminal.markHidden();
         });
     });
 }

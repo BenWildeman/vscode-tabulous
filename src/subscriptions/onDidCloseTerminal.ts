@@ -2,30 +2,30 @@ import { Terminal } from "vscode";
 import common from "../common";
 import { StatusBarTerminal } from "../statusBarTerminal";
 
-export function onDidCloseTerminal(terminal: Terminal) {
+export async function onDidCloseTerminal(closedTerminal: Terminal) {
+    const closedTerminalID = await closedTerminal.processId;
+    const terminalExists = common.terminals.has(closedTerminalID);
+
+    if (!terminalExists) {
+        return;
+    }
+    
     common.terminalCount--;
-    let terminalIndex: number, end: Boolean = false;
-
-    common.terminals.forEach((statusBarTerminal, i) => {
-        if (statusBarTerminal.hasTerminal(terminal)) {
-            terminalIndex = i; 
-        }
-    });
-
-    common.terminals[terminalIndex].dispose();
-    // Push all terminals ahead of it back 1 index
-    common.terminals.splice(terminalIndex, 1);
+    let end: Boolean = false;
+    const terminalIndex = Array.from(common.terminals.values()).findIndex(t => t.terminalID === closedTerminalID);
+    common.terminals.get(closedTerminalID).terminal.dispose();
+    common.terminals.delete(closedTerminalID);
 
     if (terminalIndex === common.terminalCount) {
         end = true;
     }
-    
-    common.terminals.forEach((statusBarTerminal, i) => {
-        common.terminals[i].setTerminalIndex(i, statusBarTerminal.name);
+
+    Array.from(common.terminals.values()).forEach(async ({ terminal }, i) => {
+        terminal.setTerminalIndex(i, terminal.name);
 
         // Replicate the native VS Code showing of the next terminal when one is closed
         if (common.loaded && i === (end ? terminalIndex - 1 : terminalIndex)) {
-           common.terminals[i].show();
+           terminal.show();
         }
     });
 }

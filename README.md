@@ -51,8 +51,3 @@ This extension provides the following settings:
     "executeCommand": false
 }]
 ```
-
-## Limitations
-
-- The terminals can only be tracked when they are created by the terminal API (See [Microsoft/vscode#13267](https://github.com/Microsoft/vscode/issues/13267)). It is currently not possible to intercept creation of the terminal panel on restart for example.
-- Creating a terminal with the default VS Code method **will** break this extension, especially toggling the terminals. Don't do it
