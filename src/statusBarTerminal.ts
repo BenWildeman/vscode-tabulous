@@ -7,9 +7,10 @@ export class StatusBarTerminal {
     private _terminal: Terminal;
 
     constructor(terminalIndex: number, show: boolean, name?: string, terminal?: Terminal) {
-        this._item = window.createStatusBarItem();
+        this._item = window.createStatusBarItem(1, -10);
         this.setTerminalIndex(terminalIndex, name);
         this._item.show();
+        this._item.tooltip = `Show ${name} terminal`;
 
         this._terminal = terminal ? terminal : window.createTerminal(name);
 
@@ -31,6 +32,8 @@ export class StatusBarTerminal {
         const terminalID = await this._terminal.processId;
         this._showing = true;
         this._item.color = config.get("activeTabColor");
+        this._item.tooltip = `Hide ${this.name} terminal`;
+        this._item.text = `$(terminal) ${this.name}`;
         this._terminal.show();
 
         common.activeTerminal = terminalID;
@@ -44,6 +47,8 @@ export class StatusBarTerminal {
     public markHidden() {
         this._showing = false;
         this._item.color = undefined;
+        this._item.tooltip = `Show ${this._terminal.name} terminal`;
+        this._item.text = `$(terminal) ${this.name}`;
 
         common.activeTerminal = undefined;
     }
