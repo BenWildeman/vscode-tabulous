@@ -1,5 +1,5 @@
-import { ExtensionContext, commands, window, workspace, Terminal } from "vscode";
-import { createTerminal, createNamedTerminal, onDidCloseTerminal, onDidOpenTerminal, reloadTerminals, showTerminal } from "./subscriptions";
+import { ExtensionContext, commands, window, workspace } from "vscode";
+import { createTerminal, createNamedTerminal, onDidCloseTerminal, onDidOpenTerminal, reloadTerminals, toggleTerminal, onDidChangeActiveTerminal } from "./subscriptions";
 import { DefaultTerminal } from "./types";
 import common, { MAX_TERMINALS, loadTerminals } from "./common";
 
@@ -15,17 +15,23 @@ export async function activate(context: ExtensionContext) {
         context.subscriptions.push(reloadTerminals());
 
         for (let i = 1; i <= MAX_TERMINALS; i++) {
-            context.subscriptions.push(showTerminal(i));
+            context.subscriptions.push(toggleTerminal(i));
         }
-        
+
         context.subscriptions.push(window.onDidCloseTerminal(onDidCloseTerminal));
-        context.subscriptions.push((<any>window).onDidOpenTerminal(onDidOpenTerminal));
+
+        if ("onDidOpenTerminal" in window) {
+            context.subscriptions.push(window.onDidOpenTerminal(onDidOpenTerminal));
+        }
+
+        context.subscriptions.push(window.onDidChangeActiveTerminal(onDidChangeActiveTerminal));
 
         if (defaultTerminals && defaultTerminals.length) {
             loadTerminals(defaultTerminals);
         }
 
         common.loaded = true;
+
     } catch {
         // can't do anything
     }

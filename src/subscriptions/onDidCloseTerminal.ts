@@ -1,6 +1,5 @@
 import { Terminal } from "vscode";
 import common from "../common";
-import { StatusBarTerminal } from "../statusBarTerminal";
 
 export async function onDidCloseTerminal(closedTerminal: Terminal) {
     const closedTerminalID = await closedTerminal.processId;
@@ -9,7 +8,7 @@ export async function onDidCloseTerminal(closedTerminal: Terminal) {
     if (!terminalExists) {
         return;
     }
-    
+
     common.terminalCount--;
     let end: Boolean = false;
     const terminalIndex = Array.from(common.terminals.values()).findIndex(t => t.terminalID === closedTerminalID);

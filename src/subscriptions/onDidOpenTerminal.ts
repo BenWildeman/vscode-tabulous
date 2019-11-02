@@ -8,7 +8,7 @@ export async function onDidOpenTerminal(terminal: Terminal) {
 
     if (!terminalExists) {
         common.terminals.forEach(({ terminal }) => {
-            terminal.markHidden();
+            terminal.hide();
         });
 
         const _terminal = new StatusBarTerminal(common.terminalCount++, true, terminal.name, terminal);

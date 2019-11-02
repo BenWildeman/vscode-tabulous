@@ -13,7 +13,7 @@ export function createNamedTerminal() {
             placeHolder: "Enter the name of the new terminal"
         }).then(async name => {
             common.terminals.forEach(({ terminal }) => {
-                terminal.markHidden();
+                terminal.hide();
             });
 
             const _terminal = new StatusBarTerminal(common.terminalCount++, true, name);

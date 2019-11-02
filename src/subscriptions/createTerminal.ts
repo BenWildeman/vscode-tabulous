@@ -10,7 +10,7 @@ export function createTerminal() {
         }
 
         common.terminals.forEach(({ terminal }) => {
-            terminal.markHidden();
+            terminal.hide();
         });
 
         const _terminal = new StatusBarTerminal(common.terminalCount++, true);
