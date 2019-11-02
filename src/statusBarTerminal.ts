@@ -7,12 +7,12 @@ export class StatusBarTerminal {
     private _terminal: Terminal;
 
     constructor(terminalIndex: number, show: boolean, name?: string, terminal?: Terminal) {
+        this._terminal = terminal ? terminal : window.createTerminal(name);
+        
         this._item = window.createStatusBarItem(1, -10);
         this.setTerminalIndex(terminalIndex, name);
         this._item.show();
-        this._item.tooltip = `Show ${name} terminal`;
 
-        this._terminal = terminal ? terminal : window.createTerminal(name);
 
         if (show) {
             this.show();
@@ -27,6 +27,16 @@ export class StatusBarTerminal {
         return this._terminal.processId;
     }
 
+    public showTerminal() {
+        this._terminal.show();
+        this.show();
+    }
+
+    public hideTerminal() {
+        this._terminal.hide();
+        this.hide();
+    }
+
     public async show() {
         const config = workspace.getConfiguration("tabulous");
         const terminalID = await this._terminal.processId;
@@ -34,17 +44,11 @@ export class StatusBarTerminal {
         this._item.color = config.get("activeTabColor");
         this._item.tooltip = `Hide ${this.name} terminal`;
         this._item.text = `$(terminal) ${this.name}`;
-        this._terminal.show();
 
         common.activeTerminal = terminalID;
     }
 
     public hide() {
-        this.markHidden();
-        this._terminal.hide();
-    }
-
-    public markHidden() {
         this._showing = false;
         this._item.color = undefined;
         this._item.tooltip = `Show ${this._terminal.name} terminal`;
@@ -53,12 +57,13 @@ export class StatusBarTerminal {
         common.activeTerminal = undefined;
     }
 
-    public toggle() {
-        this._showing ? this.hide() : this.show();
+    public toggleTerminal() {
+        this._showing ? this.hideTerminal() : this.showTerminal();
     }
 
     public setTerminalIndex(i: number, name?: string) {
         this._item.text = `$(terminal) ${name ? name : (i + 1)}`;
+        this._item.tooltip = `Show ${name} terminal`;
         this._item.command = `tabulous.showTerminal${i + 1}`; 
     }
 

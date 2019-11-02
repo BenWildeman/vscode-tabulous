@@ -1,5 +1,10 @@
 # Tabulous Change Log
 
+## 0.5.0
+* Add tooltips for tabs
+* Create tabs on native terminal creation
+* Track when active terminal changes natively
+
 ## 0.4.0
 * Added executeCommand option for default terminals - Makes it possible to pretype the command when the default terminals are opened without actually executing them
 

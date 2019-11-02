@@ -14,7 +14,7 @@
     "url": "git+https://github.com/BenWildeman/vscode-tabulous.git"
   },
   "engines": {
-    "vscode": "^1.30.0"
+    "vscode": "^1.39.0"
   },
   "categories": [
     "Other"
@@ -127,11 +127,11 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
-    "typescript": "^3.2.2",
-    "vscode": "^1.1.26",
-    "mocha": "^5.2.0",
-    "@types/node": "^10.12.14",
-    "@types/mocha": "^5.2.5"
+    "typescript": "^3.6.4",
+    "vscode": "^1.1.36",
+    "mocha": "^6.2.2",
+    "@types/node": "^12.12.5",
+    "@types/mocha": "^5.2.7"
   },
   "homepage": "https://github.com/BenWildeman/vscode-tabulous#readme",
   "directories": {
