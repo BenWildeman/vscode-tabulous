@@ -2,7 +2,7 @@
   "name": "tabulous",
   "displayName": "Tabulous - Terminal Tabs",
   "description": "Adds tabs for each terminal process to the status bar",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "preview": true,
   "publisher": "bwildeman",
   "icon": "images/icon.png",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BenWildeman/vscode-tabulous.git"
+    "url": "https://github.com/BenWildeman/vscode-tabulous"
   },
   "engines": {
     "vscode": "^1.39.0"
@@ -27,7 +27,7 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./out/src/extension",
+  "main": "./out/extension",
   "contributes": {
     "configuration": {
       "type": "object",
@@ -122,16 +122,20 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.5",
+    "mocha": "^6.2.2",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.6.4",
     "vscode": "^1.1.36",
-    "mocha": "^6.2.2",
-    "@types/node": "^12.12.5",
-    "@types/mocha": "^5.2.7"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "homepage": "https://github.com/BenWildeman/vscode-tabulous#readme",
   "directories": {

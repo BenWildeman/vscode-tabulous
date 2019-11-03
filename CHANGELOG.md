@@ -1,5 +1,8 @@
 # Tabulous Change Log
 
+## 0.5.1
+* Bundled the extension with webpack
+
 ## 0.5.0
 * Add tooltips for tabs
 * Create tabs on native terminal creation
