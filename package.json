@@ -50,10 +50,10 @@
               },
               "directory": {
                 "type": "string",
-                "description": "Starting directory"
+                "description": "Starting directory. Can include ${workspaceFolder}.\nRelative paths (after substitution) are resolved in the following order :\n   1. \"terminal.integrated.cwd\", if present\n   2. code-workspace file's location\n   3. Opened folder"
               },
               "command": {
-                "type": "string",
+                "type": "path",
                 "description": "Starting command"
               },
               "executeCommand": {
@@ -80,44 +80,8 @@
         "title": "Tabulous: Reload default terminals"
       },
       {
-        "command": "tabulous.showTerminal1",
-        "title": "Tabulous: Show terminal #1"
-      },
-      {
-        "command": "tabulous.showTerminal2",
-        "title": "Tabulous: Show terminal #2"
-      },
-      {
-        "command": "tabulous.showTerminal3",
-        "title": "Tabulous: Show terminal #3"
-      },
-      {
-        "command": "tabulous.showTerminal4",
-        "title": "Tabulous: Show terminal #4"
-      },
-      {
-        "command": "tabulous.showTerminal5",
-        "title": "Tabulous: Show terminal #5"
-      },
-      {
-        "command": "tabulous.showTerminal6",
-        "title": "Tabulous: Show terminal #6"
-      },
-      {
-        "command": "tabulous.showTerminal7",
-        "title": "Tabulous: Show terminal #7"
-      },
-      {
-        "command": "tabulous.showTerminal8",
-        "title": "Tabulous: Show terminal #8"
-      },
-      {
-        "command": "tabulous.showTerminal9",
-        "title": "Tabulous: Show terminal #9"
-      },
-      {
-        "command": "tabulous.showTerminal10",
-        "title": "Tabulous: Show terminal #10"
+        "command": "tabulous.showTerminal",
+        "title": "Tabulous: Show terminal"
       }
     ]
   },
@@ -138,13 +102,11 @@
     "typescript": "^3.6.4",
     "vscode": "^1.1.36",
     "ts-loader": "^6.2.1",
+    "vscode-test": "^1.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
   "homepage": "https://github.com/BenWildeman/vscode-tabulous#readme",
-  "directories": {
-    "test": "test"
-  },
   "author": "Ben Wildeman",
   "license": "MIT",
   "lint-staged": {
