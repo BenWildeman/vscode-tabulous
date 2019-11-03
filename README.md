@@ -47,3 +47,10 @@ This extension provides the following settings:
     "executeCommand": false
 }]
 ```
+
+note that the starting directory (`"directory:"`) can include ${workspaceFolder}.
+
+Relative paths (after substitution) are resolved in the following order :
+1. `"terminal.integrated.cwd"` setting, if present
+2. code-workspace file's location
+3. Opened folder
