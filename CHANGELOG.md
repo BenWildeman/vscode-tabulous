@@ -1,5 +1,8 @@
 # Tabulous Change Log
 
+## 0.5.2
+* Fixed directory path resolution for default terminals.
+
 ## 0.5.1
 * Bundled the extension with webpack
 

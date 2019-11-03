@@ -1,13 +1,22 @@
 import { StatusBarItem, Terminal, window, workspace } from "vscode";
-import common from "./common";
+import { default as common, resolveWorkspaceFolderPath } from "./common";
+
+export interface StatusBarTerminalOptions {
+    terminalIndex: number;
+    show: boolean;
+    name?: string;
+    terminal?: Terminal;
+    cwd?: string;
+}
 
 export class StatusBarTerminal {
     private _item: StatusBarItem;
     private _showing: boolean = false;
     private _terminal: Terminal;
 
-    constructor(terminalIndex: number, show: boolean, name?: string, terminal?: Terminal) {
-        this._terminal = terminal ? terminal : window.createTerminal(name);
+    constructor({terminalIndex, show, name, terminal, cwd}: StatusBarTerminalOptions) {
+        cwd = resolveWorkspaceFolderPath(cwd);
+        this._terminal = terminal || window.createTerminal({name, cwd});
         
         this._item = window.createStatusBarItem(1, -10);
         this.setTerminalIndex(terminalIndex, name);
