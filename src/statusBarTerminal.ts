@@ -1,13 +1,5 @@
 import { StatusBarItem, Terminal, window, workspace } from "vscode";
-import { default as common, resolveWorkspaceFolderPath } from "./common";
-
-export interface StatusBarTerminalOptions {
-    terminalIndex: number;
-    show: boolean;
-    name?: string;
-    terminal?: Terminal;
-    cwd?: string;
-}
+import common from "./common";
 
 export class StatusBarTerminal {
     private _item: StatusBarItem;

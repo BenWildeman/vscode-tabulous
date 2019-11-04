@@ -15,10 +15,7 @@ export function createTerminal() {
             terminal.hide();
         });
 
-        const _terminal = new StatusBarTerminal({
-            terminalIndex: common.terminalCount++,
-            show: true
-        });
+        const _terminal = new StatusBarTerminal(common.terminalCount++, true);
         const terminalID = await _terminal.processId;
 
         common.terminals.set(terminalID, { terminalID, terminal: _terminal });
