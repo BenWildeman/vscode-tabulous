@@ -2,7 +2,7 @@
   "name": "tabulous",
   "displayName": "Tabulous - Terminal Tabs",
   "description": "Adds tabs for each terminal process to the status bar",
-  "version": "0.5.2",
+  "version": "0.5.1",
   "preview": true,
   "publisher": "bwildeman",
   "icon": "images/icon.png",
@@ -27,7 +27,7 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./out/extension",
+  "main": "./out/src/extension",
   "contributes": {
     "configuration": {
       "type": "object",
@@ -80,27 +80,59 @@
         "title": "Tabulous: Reload default terminals"
       },
       {
-        "command": "tabulous.showTerminal",
-        "title": "Tabulous: Show terminal"
+        "command": "tabulous.showTerminal1",
+        "title": "Tabulous: Show terminal #1"
+      },
+      {
+        "command": "tabulous.showTerminal2",
+        "title": "Tabulous: Show terminal #2"
+      },
+      {
+        "command": "tabulous.showTerminal3",
+        "title": "Tabulous: Show terminal #3"
+      },
+      {
+        "command": "tabulous.showTerminal4",
+        "title": "Tabulous: Show terminal #4"
+      },
+      {
+        "command": "tabulous.showTerminal5",
+        "title": "Tabulous: Show terminal #5"
+      },
+      {
+        "command": "tabulous.showTerminal6",
+        "title": "Tabulous: Show terminal #6"
+      },
+      {
+        "command": "tabulous.showTerminal7",
+        "title": "Tabulous: Show terminal #7"
+      },
+      {
+        "command": "tabulous.showTerminal8",
+        "title": "Tabulous: Show terminal #8"
+      },
+      {
+        "command": "tabulous.showTerminal9",
+        "title": "Tabulous: Show terminal #9"
+      },
+      {
+        "command": "tabulous.showTerminal10",
+        "title": "Tabulous: Show terminal #10"
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "webpack --mode production",
-    "webpack": "webpack --mode development",
-    "webpack-dev": "webpack --mode development --watch",
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.5",
     "mocha": "^6.2.2",
-    "ts-loader": "^6.2.1",
     "typescript": "^3.6.4",
     "vscode": "^1.1.36",
-    "vscode-test": "^1.2.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "vscode-test": "^1.2.0"
   },
   "homepage": "https://github.com/BenWildeman/vscode-tabulous#readme",
   "author": "Ben Wildeman",
