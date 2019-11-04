@@ -8,7 +8,7 @@ export function toggleTerminal(i: number) {
 
         common.terminals.forEach(({ terminal }, id) => {
             // Toggle or mark terminal as hidden
-           id === terminalID ? terminal.toggleTerminal() : terminal.hide();
+            id === terminalID ? terminal.toggleTerminal() : terminal.hide();
         });
     });
 }

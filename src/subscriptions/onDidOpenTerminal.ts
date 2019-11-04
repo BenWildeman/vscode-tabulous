@@ -2,8 +2,8 @@ import { Terminal } from "vscode";
 import common from "../common";
 import { StatusBarTerminal } from "../statusBarTerminal";
 
-export async function onDidOpenTerminal(terminal: Terminal) {
-    const terminalID = await terminal.processId;
+export async function onDidOpenTerminal(openedTerminal: Terminal) {
+    const terminalID = await openedTerminal.processId;
     const terminalExists = common.terminals.has(terminalID);
 
     if (!terminalExists) {
@@ -11,7 +11,12 @@ export async function onDidOpenTerminal(terminal: Terminal) {
             terminal.hide();
         });
 
-        const _terminal = new StatusBarTerminal(common.terminalCount++, true, terminal.name, terminal);
-        common.terminals.set(terminalID, {terminalID, terminal: _terminal});
+        const _terminal = new StatusBarTerminal(
+            common.terminalCount++,
+            true,
+            openedTerminal.name,
+            openedTerminal,
+        );
+        common.terminals.set(terminalID, { terminalID, terminal: _terminal });
     }
 }

@@ -1,14 +1,24 @@
-import { ExtensionContext, commands, window, workspace } from "vscode";
-import { createTerminal, createNamedTerminal, onDidCloseTerminal, onDidOpenTerminal, reloadTerminals, toggleTerminal, onDidChangeActiveTerminal } from "./subscriptions";
+import { commands, ExtensionContext, window, workspace } from "vscode";
+import common, { loadTerminals, MAX_TERMINALS } from "./common";
+import {
+    createNamedTerminal,
+    createTerminal,
+    onDidChangeActiveTerminal,
+    onDidCloseTerminal,
+    onDidOpenTerminal,
+    reloadTerminals,
+    toggleTerminal,
+} from "./subscriptions";
 import { DefaultTerminal } from "./types";
-import common, { MAX_TERMINALS, loadTerminals } from "./common";
 
 export async function activate(context: ExtensionContext) {
     try {
         // vscode loves to start a terminal if you previously had one or more open. get rid of it
         await commands.executeCommand("workbench.action.terminal.kill");
         const config = workspace.getConfiguration("tabulous");
-        const defaultTerminals = config.get<DefaultTerminal[]>("defaultTerminals");
+        const defaultTerminals = config.get<DefaultTerminal[]>(
+            "defaultTerminals",
+        );
 
         context.subscriptions.push(createNamedTerminal());
         context.subscriptions.push(createTerminal());
@@ -18,20 +28,25 @@ export async function activate(context: ExtensionContext) {
             context.subscriptions.push(toggleTerminal(i));
         }
 
-        context.subscriptions.push(window.onDidCloseTerminal(onDidCloseTerminal));
+        context.subscriptions.push(
+            window.onDidCloseTerminal(onDidCloseTerminal),
+        );
 
         if ("onDidOpenTerminal" in window) {
-            context.subscriptions.push(window.onDidOpenTerminal(onDidOpenTerminal));
+            context.subscriptions.push(
+                window.onDidOpenTerminal(onDidOpenTerminal),
+            );
         }
 
-        context.subscriptions.push(window.onDidChangeActiveTerminal(onDidChangeActiveTerminal));
+        context.subscriptions.push(
+            window.onDidChangeActiveTerminal(onDidChangeActiveTerminal),
+        );
 
         if (defaultTerminals && defaultTerminals.length) {
             loadTerminals(defaultTerminals);
         }
 
         common.loaded = true;
-
     } catch {
         // can't do anything
     }
