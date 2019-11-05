@@ -14,17 +14,20 @@ const common: Common = {
 
 export function loadTerminals(defaultTerminals: DefaultTerminal[]) {
     defaultTerminals.forEach(async (terminal) => {
-        const { name, directory, command, executeCommand = true } = terminal;
-        const _terminal = new StatusBarTerminal(
-            common.terminalCount++,
-            false,
+        const {
             name,
-        );
-        const terminalID = await _terminal.processId;
+            directory: cwd,
+            command,
+            executeCommand = true,
+        } = terminal;
+        const _terminal = new StatusBarTerminal({
+            terminalIndex: common.terminalCount++,
+            show: false,
+            name,
+            cwd,
+        });
 
-        if (directory) {
-            _terminal.sendCommand(`cd ${directory}`);
-        }
+        const terminalID = await _terminal.processId;
 
         if (command) {
             _terminal.sendCommand(command, executeCommand);

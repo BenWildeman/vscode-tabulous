@@ -36,14 +36,36 @@ This extension provides the following settings:
 `tabulous.defaultTerminals` example:
 
 ```json
-"tabulous.defaultTerminals": [{
-    "name": "API",
-    "directory": "absolute/path/to/api",
-    "command": "npm start"
-}, {
-    "name": "App",
-    "directory": "absolute/path/to/api",
-    "command": "npm start",
-    "executeCommand": false
-}]
+{
+    "folders": [
+		{
+			"path": "relative/to/workspace/file",
+			"name": "Named Workspace",
+		},
+        {
+			"path": "relative/to/workspace/file",
+			"name": "Another Named Workspace",
+		},
+	],
+    "tabulous.defaultTerminals": [{
+        "name": "App",
+        // Could be absolute path
+        "directory": "C:/absolute/path",
+        "command": "npm start",
+        "executeCommand": false
+    }, {
+        "name": "API",
+        // Could be the name of the workspace folder specified within the .code-workspace
+        "directory": "Workspace Folder Name",
+        "command": "npm start"
+    }, {
+        "name": "Watcher",
+        // Could be relative path. If multi-root workspace,
+        // path will be relative to the .code-workspace directory, otherwise
+        // it will be relative to the workspace directory
+        "directory": "./relative/path",
+        "command": "npm run watch",
+        "executeCommand": false
+    }]
+}
 ```
