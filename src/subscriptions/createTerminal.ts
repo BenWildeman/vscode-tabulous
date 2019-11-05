@@ -1,11 +1,13 @@
-import { window, commands } from "vscode";
+import { commands, window } from "vscode";
 import common, { MAX_TERMINALS } from "../common";
 import { StatusBarTerminal } from "../statusBarTerminal";
 
 export function createTerminal() {
     return commands.registerCommand("tabulous.createTerminal", async () => {
         if (common.terminals.size >= MAX_TERMINALS) {
-            window.showInformationMessage(`This extension does not support more than ${MAX_TERMINALS} terminals.`);
+            window.showInformationMessage(
+                `This extension does not support more than ${MAX_TERMINALS} terminals.`,
+            );
             return;
         }
 
@@ -15,7 +17,7 @@ export function createTerminal() {
 
         const _terminal = new StatusBarTerminal(common.terminalCount++, true);
         const terminalID = await _terminal.processId;
-        
-        common.terminals.set(terminalID, {terminalID, terminal: _terminal});
+
+        common.terminals.set(terminalID, { terminalID, terminal: _terminal });
     });
 }

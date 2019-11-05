@@ -127,16 +127,32 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
-    "typescript": "^3.6.4",
-    "vscode": "^1.1.36",
-    "mocha": "^6.2.2",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.5",
-    "@types/mocha": "^5.2.7"
+    "husky": "^3.0.9",
+    "lint-staged": "9.4.2",
+    "mocha": "^6.2.2",
+    "prettier": "^1.18.2",
+    "tslint": "^6.0.0-beta0",
+    "typescript": "^3.6.4",
+    "vscode": "^1.1.36"
   },
   "homepage": "https://github.com/BenWildeman/vscode-tabulous#readme",
   "directories": {
     "test": "test"
   },
   "author": "Ben Wildeman",
-  "license": "MIT"
+  "license": "MIT",
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint -p tsconfig.json -c tslint.json --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }

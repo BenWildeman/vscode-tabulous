@@ -6,13 +6,17 @@ export class StatusBarTerminal {
     private _showing: boolean = false;
     private _terminal: Terminal;
 
-    constructor(terminalIndex: number, show: boolean, name?: string, terminal?: Terminal) {
+    constructor(
+        terminalIndex: number,
+        show: boolean,
+        name?: string,
+        terminal?: Terminal,
+    ) {
         this._terminal = terminal ? terminal : window.createTerminal(name);
-        
+
         this._item = window.createStatusBarItem(1, -10);
         this.setTerminalIndex(terminalIndex, name);
         this._item.show();
-
 
         if (show) {
             this.show();
@@ -62,9 +66,9 @@ export class StatusBarTerminal {
     }
 
     public setTerminalIndex(i: number, name?: string) {
-        this._item.text = `$(terminal) ${name ? name : (i + 1)}`;
+        this._item.text = `$(terminal) ${name ? name : i + 1}`;
         this._item.tooltip = `Show ${name} terminal`;
-        this._item.command = `tabulous.showTerminal${i + 1}`; 
+        this._item.command = `tabulous.showTerminal${i + 1}`;
     }
 
     public sendCommand(command: string, execute: boolean = true) {
