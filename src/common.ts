@@ -21,10 +21,6 @@ export function loadTerminals(defaultTerminals: DefaultTerminal[]) {
             name,
         );
         const terminalID = await _terminal.processId;
-        
-        if (directory) {
-            _terminal.sendCommand(`cd ${directory}`);
-        }
 
         if (directory) {
             _terminal.sendCommand(`cd ${directory}`);
