@@ -1,12 +1,8 @@
 # Tabulous
 
-Adds tabs for each terminal process to the status bar. It works by registering toggleable status bar buttons when terminals are created via the commands below. This is an extended version of [terminal-tabs](https://github.com/Tyriar/vscode-terminal-tabs).
+Adds tabs for each terminal process to the status bar. It works by registering toggleable status bar buttons when terminals are created via the commands below. This extension started its life as [terminal-tabs](https://github.com/Tyriar/vscode-terminal-tabs).
 
-## Why forked?
-
-This extension was forked because the original does not provide the functionality I needed. The original also isn't going to be updated as VS Code is working on implementing tabbed terminals, but in the mean time this extension provides this functionality until that is in place.
-
-This extension provides the following extended functionality:
+This extension provides the following extended functionality over the original:
 
 - Each tab can be toggled open and closed by clicking the tab in the status bar
 - The active tab is highlighted so you can quickly determine which tab is open
