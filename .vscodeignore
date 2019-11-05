@@ -8,4 +8,6 @@ src/**
 tsconfig.json
 webpack.config.js
 node_modules
-yarn.lock
+.prettierrc
+package-lock.json
+tslint.json
