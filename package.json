@@ -50,7 +50,7 @@
               },
               "directory": {
                 "type": "string",
-                "description": "Starting directory"
+                "description": "Starting directory. A file path or workspace folder name. e.g. `Workspace Name` `c:/aboslute/path` or `./relative/path`. A relative path will be resolved either from the workspace dir, or the .code-workspace file, depending on if it's a multi-root workspace."
               },
               "command": {
                 "type": "string",

@@ -1,36 +1,57 @@
-import { commands, window } from "vscode";
+import { commands, window, workspace, WorkspaceFolder } from "vscode";
 import common, { MAX_TERMINALS } from "../common";
 import { StatusBarTerminal } from "../statusBarTerminal";
 
 export function createNamedTerminal() {
-    return commands.registerCommand("tabulous.createNamedTerminal", () => {
-        if (common.terminals.size >= MAX_TERMINALS) {
-            window.showInformationMessage(
-                `This extension does not support more than ${MAX_TERMINALS} terminals.`,
-            );
-            return;
-        }
+    return commands.registerCommand(
+        "tabulous.createNamedTerminal",
+        async () => {
+            if (common.terminals.size >= MAX_TERMINALS) {
+                window.showInformationMessage(
+                    `This extension does not support more than ${MAX_TERMINALS} terminals.`,
+                );
+                return;
+            }
 
-        window
-            .showInputBox({
-                placeHolder: "Enter the name of the new terminal",
-            })
-            .then(async (name) => {
+            try {
+                let cwd: string;
+
+                if (workspace.workspaceFolders.length > 1) {
+                    const workspaceFolder = await window.showWorkspaceFolderPick(
+                        {
+                            placeHolder:
+                                "Select working directory for new terminal",
+                        },
+                    );
+
+                    cwd = workspaceFolder.uri.fsPath;
+                }
+
+                const name = await window.showInputBox({
+                    placeHolder: "Enter name for new terminal",
+                });
+
                 common.terminals.forEach(({ terminal }) => {
                     terminal.hide();
                 });
 
-                const _terminal = new StatusBarTerminal(
-                    common.terminalCount++,
-                    true,
+                const _terminal = new StatusBarTerminal({
+                    terminalIndex: common.terminalCount++,
+                    show: true,
                     name,
-                );
+                    cwd,
+                });
+
                 const terminalID = await _terminal.processId;
 
                 common.terminals.set(terminalID, {
                     terminalID,
                     terminal: _terminal,
                 });
-            });
-    });
+            } catch {
+                // nothing we can do
+                window.showErrorMessage("Unable to create named terminal");
+            }
+        },
+    );
 }

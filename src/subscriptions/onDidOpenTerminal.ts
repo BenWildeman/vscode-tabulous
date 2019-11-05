@@ -11,12 +11,13 @@ export async function onDidOpenTerminal(openedTerminal: Terminal) {
             terminal.hide();
         });
 
-        const _terminal = new StatusBarTerminal(
-            common.terminalCount++,
-            true,
-            openedTerminal.name,
-            openedTerminal,
-        );
+        const _terminal = new StatusBarTerminal({
+            terminalIndex: common.terminalCount++,
+            show: true,
+            name: openedTerminal.name,
+            terminal: openedTerminal,
+        });
+
         common.terminals.set(terminalID, { terminalID, terminal: _terminal });
     }
 }
