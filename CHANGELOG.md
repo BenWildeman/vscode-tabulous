@@ -1,5 +1,13 @@
 # Tabulous Change Log
 
+## 1.0.0
+* Added multi-root workspace support
+    * When creating a new terminal, you will be prompted to choose which workspace folder to open the terminal in
+    * Now possible to use workspace folder name within the `directory` option of `defaultTerminals`
+* Relative paths within `directory` option of `defaultTerminals` will now either resolve from the workspace folder, or the workspace file directory if it's a multi-root workspace
+* Shows Change Log prompt when version is updated
+
+
 ## 0.5.0
 * Add tooltips for tabs
 * Create tabs on native terminal creation
