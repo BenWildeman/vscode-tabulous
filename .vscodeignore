@@ -6,4 +6,8 @@ src/**
 **/*.map
 .gitignore
 tsconfig.json
-vsc-extension-quickstart.md
+webpack.config.js
+node_modules
+.prettierrc
+package-lock.json
+tslint.json
