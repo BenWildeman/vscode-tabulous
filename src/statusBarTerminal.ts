@@ -60,7 +60,12 @@ export class StatusBarTerminal {
     }
 
     private resolveDir(path?: string) {
-        const { workspaceFile, workspaceFolders } = workspace;
+        const { rootPath, workspaceFile, workspaceFolders } = workspace;
+
+        if (!workspaceFile) {
+            return rootPath;
+        }
+
         const workspaceFileDir = dirname(workspaceFile.fsPath);
 
         if (path) {
