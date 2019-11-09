@@ -1,5 +1,8 @@
 # Tabulous Change Log
 
+## 1.0.1
+* Fixed bug where it's not possible to create terminal without workspace
+
 ## 1.0.0
 * Added multi-root workspace support
     * When creating a new terminal, you will be prompted to choose which workspace folder to open the terminal in
