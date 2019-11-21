@@ -61,7 +61,8 @@ export class StatusBarTerminal {
 
     private resolveDir(path?: string) {
         const { workspaceFile, workspaceFolders } = workspace;
-        const workspaceFileDir = dirname(workspaceFile.fsPath);
+        // There'll definitely be a workspace file if there's more than one workspace folder
+        const workspaceFileDir = workspaceFile && dirname(workspaceFile.fsPath);
 
         if (path) {
             let cwd: string;

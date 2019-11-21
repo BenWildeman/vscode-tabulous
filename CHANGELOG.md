@@ -1,5 +1,8 @@
 # Tabulous Change Log
 
+## 1.0.2
+* Fixed bug where it's not possible to create terminal without workspace, for real this time
+
 ## 1.0.1
 * Fixed bug where it's not possible to create terminal without workspace
 
