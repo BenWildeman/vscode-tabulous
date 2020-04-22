@@ -14,7 +14,7 @@ export async function onDidCloseTerminal(closedTerminal: Terminal) {
     const terminalIndex = Array.from(common.terminals.values()).findIndex(
         (t) => t.terminalID === closedTerminalID,
     );
-    common.terminals.get(closedTerminalID).terminal.dispose();
+    common.terminals.get(closedTerminalID)?.terminal.dispose();
     common.terminals.delete(closedTerminalID);
 
     if (terminalIndex === common.terminalCount) {

@@ -2,12 +2,17 @@
 
 'use strict';
 
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require('path');
 
 /**@type {import('webpack').Configuration}*/
 const config = {
   target: 'node', // vscode extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
   entry: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
   output: {
     // the bundle is stored in the 'output' folder (check package.json), 📖 -> https://webpack.js.org/configuration/output/
     path: path.resolve(__dirname, 'out'),

@@ -1,5 +1,10 @@
 # Tabulous Change Log
 
+## 1.0.3
+* Fixed edge-case where it's not possible to create terminal when through a new blank window
+* Now waits for "default terminal reloaded" message before specifying as loaded
+* Made sure terminal exists in the terminals list before trying to dispose it
+
 ## 1.0.2
 * Fixed bug where it's not possible to create terminal without workspace, for real this time
 

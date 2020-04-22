@@ -2,7 +2,7 @@ import { commands, window, workspace } from "vscode";
 import common, { loadTerminals } from "../common";
 import { DefaultTerminal } from "../types";
 
-function load() {
+async function load() {
     if (common.terminals.size > 0) {
         if (!common.loaded) {
             setImmediate(() => {
@@ -15,9 +15,12 @@ function load() {
             "defaultTerminals",
         );
 
+        if (defaultTerminals) {
+            loadTerminals(defaultTerminals);
+            await window.showInformationMessage("Default terminals reloaded");
+        }
+
         common.loaded = true;
-        loadTerminals(defaultTerminals);
-        window.showInformationMessage("Default terminals reloaded");
     }
 }
 
@@ -28,7 +31,7 @@ export function reloadTerminals() {
             "defaultTerminals",
         );
 
-        if (defaultTerminals.length) {
+        if (defaultTerminals?.length) {
             common.loaded = false;
             common.terminals.forEach(({ terminal }) => {
                 terminal.dispose();

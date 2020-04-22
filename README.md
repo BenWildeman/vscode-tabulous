@@ -35,7 +35,7 @@ This extension provides the following settings:
 
 `tabulous.defaultTerminals` example:
 
-```json
+```jsonc
 {
     "folders": [
 		{

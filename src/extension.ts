@@ -77,7 +77,7 @@ export async function activate(context: ExtensionContext) {
             window.onDidChangeActiveTerminal(onDidChangeActiveTerminal),
         );
 
-        if (defaultTerminals && defaultTerminals.length) {
+        if (defaultTerminals?.length) {
             await loadTerminals(defaultTerminals);
         }
 
