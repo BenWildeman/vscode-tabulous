@@ -13,14 +13,17 @@ export function createTerminal() {
         }
 
         try {
-            let cwd: string;
+            let cwd: string | undefined;
 
-            if (workspace.workspaceFolders.length > 1) {
+            if (
+                workspace.workspaceFolders &&
+                workspace.workspaceFolders.length > 1
+            ) {
                 const workspaceFolder = await window.showWorkspaceFolderPick({
                     placeHolder: "Select working directory for new terminal",
                 });
 
-                cwd = workspaceFolder.uri.fsPath;
+                cwd = workspaceFolder?.uri.fsPath;
             }
 
             common.terminals.forEach(({ terminal }) => {

@@ -1,6 +1,12 @@
 import { existsSync } from "fs";
 import { dirname, isAbsolute, resolve } from "path";
-import { StatusBarItem, Terminal, window, workspace } from "vscode";
+import {
+    StatusBarAlignment,
+    StatusBarItem,
+    Terminal,
+    window,
+    workspace,
+} from "vscode";
 import common from "./common";
 
 export interface StatusBarTerminalOptions {
@@ -40,9 +46,9 @@ export class StatusBarTerminal {
     }: StatusBarTerminalOptions) {
         this._terminal = terminal
             ? terminal
-            : window.createTerminal({ name, cwd: this.resolveDir(cwd) });
+            : window.createTerminal({ name, cwd: cwd && this.resolveDir(cwd) });
 
-        this._item = window.createStatusBarItem(1, -10);
+        this._item = window.createStatusBarItem(StatusBarAlignment.Left, -10);
         this.setTerminalIndex(terminalIndex, name);
         this._item.show();
 
@@ -65,11 +71,11 @@ export class StatusBarTerminal {
         const workspaceFileDir = workspaceFile && dirname(workspaceFile.fsPath);
 
         if (path) {
-            let cwd: string;
+            let cwd: string | undefined;
 
             if (!isAbsolute(path)) {
-                if (workspaceFolders.length > 1) {
-                    const matchedWorkspaceFolder = workspaceFolders.find(
+                if (workspaceFolders && workspaceFolders.length > 1) {
+                    const matchedWorkspaceFolder = workspaceFolders?.find(
                         (w) => w.name === path,
                     );
 
@@ -77,19 +83,23 @@ export class StatusBarTerminal {
                     if (matchedWorkspaceFolder) {
                         cwd = matchedWorkspaceFolder.uri.fsPath;
                     } else {
-                        // Must be relative to the workspace file dir
-                        cwd = resolve(workspaceFileDir, path);
+                        if (workspaceFileDir) {
+                            // Must be relative to the workspace file dir
+                            cwd = resolve(workspaceFileDir, path);
+                        }
                     }
                 } else {
-                    // Only one workspace folder, use this as relative dir
-                    cwd = resolve(workspaceFolders[0].uri.fsPath, path);
+                    if (workspaceFolders) {
+                        // Only one workspace folder, use this as relative dir
+                        cwd = resolve(workspaceFolders[0].uri.fsPath, path);
+                    }
                 }
             } else {
                 cwd = path;
             }
 
             // check to see if this dir actually exists, if not, fall through
-            if (existsSync(cwd)) {
+            if (cwd && existsSync(cwd)) {
                 return cwd;
             }
 
@@ -100,12 +110,15 @@ export class StatusBarTerminal {
         }
 
         // More than one workspace folder, use workspace file dir
-        if (workspace.workspaceFolders.length > 1) {
+        if (
+            workspace.workspaceFolders &&
+            workspace.workspaceFolders.length > 1
+        ) {
             return workspaceFileDir;
         }
 
         // Use workspace folder dir
-        return workspaceFolders[0].uri.fsPath;
+        return workspaceFolders?.[0].uri.fsPath;
     }
 
     public showTerminal() {

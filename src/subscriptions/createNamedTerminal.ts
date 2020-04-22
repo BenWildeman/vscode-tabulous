@@ -14,9 +14,12 @@ export function createNamedTerminal() {
             }
 
             try {
-                let cwd: string;
+                let cwd: string | undefined;
 
-                if (workspace.workspaceFolders.length > 1) {
+                if (
+                    workspace.workspaceFolders &&
+                    workspace.workspaceFolders.length > 1
+                ) {
                     const workspaceFolder = await window.showWorkspaceFolderPick(
                         {
                             placeHolder:
@@ -24,7 +27,7 @@ export function createNamedTerminal() {
                         },
                     );
 
-                    cwd = workspaceFolder.uri.fsPath;
+                    cwd = workspaceFolder?.uri.fsPath;
                 }
 
                 const name = await window.showInputBox({
