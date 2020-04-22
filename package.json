@@ -2,7 +2,7 @@
   "name": "tabulous",
   "displayName": "Tabulous - Terminal Tabs",
   "description": "Adds tabs for each terminal process to the status bar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "bwildeman",
   "icon": "images/icon.png",
   "bugs": {
