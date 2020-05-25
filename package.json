@@ -37,7 +37,7 @@
           "default": "yellow",
           "description": "Active tab color. Must be a valid css color"
         },
-        "tabulous.TouchBar": {
+        "tabulous.touchBar": {
           "type": "boolean",
           "description": "Enable touch bar support (macOS only)",
           "default": true
@@ -147,7 +147,7 @@
       }
     ],
     "menus": {
-      "TouchBarButton": [
+      "touchBar": [
         {
           "command": "tabulous.createNamedTerminal",
           "group": "tabulous@1",
