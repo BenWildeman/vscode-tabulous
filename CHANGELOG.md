@@ -1,5 +1,8 @@
 # Tabulous Change Log
 
+## 1.1.1
+* Fixed grep rename blunder that stopped Touch Bar support from working 🤦
+
 ## 1.1.0
 * Added Rename Terminal command. Can be used as a replacement for the built-in rename terminal command (Updates the status bar icon without having to switch terminals)
 * Added support for Touch Bar (macOS):
