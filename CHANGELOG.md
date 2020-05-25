@@ -1,5 +1,12 @@
 # Tabulous Change Log
 
+## 1.1.0
+* Added Rename Terminal command. Can be used as a replacement for the built-in rename terminal command (Updates the status bar icon without having to switch terminals)
+* Added support for Touch Bar (macOS):
+    * Create Named Terminal
+    * Rename terminal
+    * Reload default terminals
+
 ## 1.0.3
 * Fixed edge-case where it's not possible to create terminal when through a new blank window
 * Now waits for "default terminal reloaded" message before specifying as loaded
