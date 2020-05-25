@@ -78,7 +78,9 @@ export async function activate(context: ExtensionContext) {
         );
 
         if (defaultTerminals?.length) {
-            loadTerminals(defaultTerminals);
+            try {
+                await loadTerminals(defaultTerminals);
+            } catch {}
         }
 
         common.loaded = true;
