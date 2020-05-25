@@ -13,33 +13,35 @@ const common: Common = {
 };
 
 export async function loadTerminals(defaultTerminals: DefaultTerminal[]) {
-    Promise.all(
-        defaultTerminals.map(async (terminal) => {
-            const {
-                name,
-                directory: cwd,
-                command,
-                executeCommand = true,
-            } = terminal;
-            const _terminal = new StatusBarTerminal({
-                terminalIndex: common.terminalCount++,
-                show: false,
-                name,
-                cwd,
-            });
+    try {
+        await Promise.all(
+            defaultTerminals.map(async (terminal) => {
+                const {
+                    name,
+                    directory: cwd,
+                    command,
+                    executeCommand = true,
+                } = terminal;
+                const _terminal = new StatusBarTerminal({
+                    terminalIndex: common.terminalCount++,
+                    show: false,
+                    name,
+                    cwd,
+                });
 
-            const terminalID = await _terminal.processId;
+                const terminalID = await _terminal.processId;
 
-            if (command) {
-                _terminal.sendCommand(command, executeCommand);
-            }
+                if (command) {
+                    _terminal.sendCommand(command, executeCommand);
+                }
 
-            common.terminals.set(terminalID, {
-                terminalID,
-                terminal: _terminal,
-            });
-        }),
-    );
+                common.terminals.set(terminalID, {
+                    terminalID,
+                    terminal: _terminal,
+                });
+            }),
+        );
+    } catch {}
 }
 
 export default common;
