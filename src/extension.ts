@@ -9,6 +9,7 @@ import {
     onDidCloseTerminal,
     onDidOpenTerminal,
     reloadTerminals,
+    renameTerminal,
     toggleTerminal,
 } from "./subscriptions";
 import { DefaultTerminal } from "./types";
@@ -57,6 +58,7 @@ export async function activate(context: ExtensionContext) {
 
         context.subscriptions.push(createNamedTerminal());
         context.subscriptions.push(createTerminal());
+        context.subscriptions.push(renameTerminal());
         context.subscriptions.push(reloadTerminals());
 
         for (let i = 1; i <= MAX_TERMINALS; i++) {

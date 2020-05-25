@@ -1,18 +1,14 @@
 # Tabulous
 
+![Tabulous gif](images/wBZXwX3uhV.gif)
+
 Adds tabs for each terminal process to the status bar. It works by registering toggleable status bar buttons when terminals are created via the commands below. This extension started its life as [terminal-tabs](https://github.com/Tyriar/vscode-terminal-tabs).
 
-This extension provides the following extended functionality over the original:
-
-- Each tab can be toggled open and closed by clicking the tab in the status bar
-- The active tab is highlighted so you can quickly determine which tab is open
-- Provides full tab naming support. The original extension did not allow naming tabs, only giving a number to the tab
-- Some settings for customisation
-
-This extension provides the original commands that terminal-tabs provided, only renamed that can be keybound in your [keybindings.json](https://code.visualstudio.com/docs/customization/keybindings#_customizing-shortcuts) file:
+Settings that can be keybound in your [keybindings.json](hsttps://code.visualstudio.com/docs/customization/keybindings#_customizing-shortcuts) file:
 
 - `tabulous.createTerminal`: Creates a terminal with an icon
 - `tabulous.createNamedTerminal`: Creates a terminal with an icon that has a name (indicated in the dropdown)
+- `tabulous.renameTerminal`: Rename the active terminal. Replaces the built in terminal rename command
 - `tabulous.reloadDefaultTerminals`: Disposes of all the currently open terminals and reloads your default terminals set within your config. Good for reloading the defaults when they've been changed, without having to close and reopen VS Code
 - `tabulous.showTerminal1`: Shows the first terminal
 - `tabulous.showTerminal2`: Shows the second terminal
@@ -38,15 +34,15 @@ This extension provides the following settings:
 ```jsonc
 {
     "folders": [
-		{
-			"path": "relative/to/workspace/file",
-			"name": "Named Workspace",
-		},
         {
-			"path": "relative/to/workspace/file",
-			"name": "Another Named Workspace",
-		},
-	],
+            "path": "relative/to/workspace/file",
+            "name": "Named Workspace",
+        },
+        {
+            "path": "relative/to/workspace/file",
+            "name": "Another Named Workspace",
+        },
+    ],
     "tabulous.defaultTerminals": [{
         "name": "App",
         // Could be absolute path

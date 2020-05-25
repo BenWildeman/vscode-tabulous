@@ -155,9 +155,13 @@ export class StatusBarTerminal {
         this._showing ? this.hideTerminal() : this.showTerminal();
     }
 
-    public setTerminalIndex(i: number, name?: string) {
-        this._item.text = `$(terminal) ${name ? name : i + 1}`;
+    public setTerimalTitle(name: string) {
+        this._item.text = `$(terminal) ${name}`;
         this._item.tooltip = `Show ${name} terminal`;
+    }
+
+    public setTerminalIndex(i: number, name?: string) {
+        this.setTerimalTitle(`${name ? name : i + 1}`);
         this._item.command = `tabulous.showTerminal${i + 1}`;
     }
 

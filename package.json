@@ -75,6 +75,10 @@
         "title": "Tabulous: Create named terminal"
       },
       {
+        "command": "tabulous.renameTerminal",
+        "title": "Tabulous: Rename terminal"
+      },
+      {
         "command": "tabulous.reloadDefaultTerminals",
         "title": "Tabulous: Reload default terminals"
       },
