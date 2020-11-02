@@ -150,6 +150,12 @@
         "title": "Tabulous: Show terminal #10"
       }
     ],
+    "keybindings":[
+      {
+        "command": "tabulous.openTerminalHere",
+        "key": "Shift+Alt+T"
+      }
+    ],
     "menus": {
       "explorer/context": [
         {
