@@ -1,5 +1,14 @@
 # Tabulous Change Log
 
+## 1.2.0
+* Added support for "Open terminal here". This defaults to setting the terminal title to the closest directory name
+    * Can be open from Explorer context menu
+    ![explorer context menu](images/O2gbG72Pin.gif)
+    * Can be open Editor tab context menu
+    ![editor title context menu](images/Q5SczO7hKU.gif)
+    * Can be open with keybind `Shift+Alt+T`. This opens a terminal from the last active file
+    ![keybind](images/PINogQfPoq.gif)
+
 ## 1.1.1
 * Fixed grep rename blunder that stopped Touch Bar support from working 🤦
 
