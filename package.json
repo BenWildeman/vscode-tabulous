@@ -154,7 +154,7 @@
       "explorer/context": [
         {
           "command": "tabulous.openTerminalHere",
-          "group": "navigation"
+          "group": "navigation@31"
         }
       ],
       "commandPalette": [
