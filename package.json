@@ -157,6 +157,12 @@
           "group": "navigation@31"
         }
       ],
+      "editor/title/context": [
+        {
+          "command": "tabulous.openTerminalHere",
+          "group": "2_files"
+        }
+      ],
       "commandPalette": [
         {
           "command": "tabulous.openTerminalHere",
