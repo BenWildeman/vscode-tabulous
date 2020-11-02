@@ -87,6 +87,10 @@
     },
     "commands": [
       {
+        "title": "Tabulous: Open terminal here",
+        "command": "tabulous.openTerminalHere"
+      },
+      {
         "command": "tabulous.createTerminal",
         "title": "Tabulous: Create terminal"
       },
@@ -146,7 +150,31 @@
         "title": "Tabulous: Show terminal #10"
       }
     ],
+    "keybindings":[
+      {
+        "command": "tabulous.openTerminalHere",
+        "key": "Shift+Alt+T"
+      }
+    ],
     "menus": {
+      "explorer/context": [
+        {
+          "command": "tabulous.openTerminalHere",
+          "group": "navigation@31"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "tabulous.openTerminalHere",
+          "group": "2_files"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "tabulous.openTerminalHere",
+          "when": "false"
+        }
+      ],
       "touchBar": [
         {
           "command": "tabulous.createNamedTerminal",
