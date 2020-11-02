@@ -37,10 +37,12 @@ export function createTerminal() {
             });
             const terminalID = await _terminal.processId;
 
-            common.terminals.set(terminalID, {
-                terminalID,
-                terminal: _terminal,
-            });
+            if (terminalID) {
+                common.terminals.set(terminalID, {
+                    terminalID,
+                    terminal: _terminal,
+                });
+            }
         } catch {
             // nothing we can do
             window.showErrorMessage("Unable to create terminal");

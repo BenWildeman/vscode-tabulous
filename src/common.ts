@@ -31,14 +31,16 @@ export async function loadTerminals(defaultTerminals: DefaultTerminal[]) {
 
                 const terminalID = await _terminal.processId;
 
-                if (command) {
-                    _terminal.sendCommand(command, executeCommand);
-                }
+                if (terminalID) {
+                    common.terminals.set(terminalID, {
+                        terminalID,
+                        terminal: _terminal,
+                    });
 
-                common.terminals.set(terminalID, {
-                    terminalID,
-                    terminal: _terminal,
-                });
+                    if (command) {
+                        _terminal.sendCommand(command, executeCommand);
+                    }
+                }
             }),
         );
     } catch {}

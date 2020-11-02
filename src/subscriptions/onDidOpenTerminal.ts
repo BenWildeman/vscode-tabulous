@@ -4,9 +4,9 @@ import { StatusBarTerminal } from "../statusBarTerminal";
 
 export async function onDidOpenTerminal(openedTerminal: Terminal) {
     const terminalID = await openedTerminal.processId;
-    const terminalExists = common.terminals.has(terminalID);
+    const terminalExists = !!terminalID && common.terminals.has(terminalID);
 
-    if (!terminalExists) {
+    if (terminalID && !terminalExists) {
         for (const { terminal } of common.terminals.values()) {
             await terminal.processId; // ensure current terminals are initialized. Seems to fix #18
             terminal.hide();
