@@ -87,6 +87,10 @@
     },
     "commands": [
       {
+        "title": "Tabulous: Open terminal here",
+        "command": "tabulous.openTerminalHere"
+      },
+      {
         "command": "tabulous.createTerminal",
         "title": "Tabulous: Create terminal"
       },
@@ -147,6 +151,18 @@
       }
     ],
     "menus": {
+      "explorer/context": [
+        {
+          "command": "tabulous.openTerminalHere",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "tabulous.openTerminalHere",
+          "when": "false"
+        }
+      ],
       "touchBar": [
         {
           "command": "tabulous.createNamedTerminal",

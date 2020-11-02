@@ -1,17 +1,9 @@
 import { resolve } from "path";
 import { commands, ExtensionContext, Uri, window, workspace } from "vscode";
 
-import common, { loadTerminals, MAX_TERMINALS } from "./common";
-import {
-    createNamedTerminal,
-    createTerminal,
-    onDidChangeActiveTerminal,
-    onDidCloseTerminal,
-    onDidOpenTerminal,
-    reloadTerminals,
-    renameTerminal,
-    toggleTerminal,
-} from "./subscriptions";
+import common, { loadTerminals } from "./common";
+import { registerContextMenuCommands } from "./contextMenu";
+import { registerSubscriptions } from "./subscriptions";
 import { DefaultTerminal } from "./types";
 
 // tslint:disable-next-line: no-var-requires
@@ -56,28 +48,8 @@ export async function activate(context: ExtensionContext) {
             "defaultTerminals",
         );
 
-        context.subscriptions.push(createNamedTerminal());
-        context.subscriptions.push(createTerminal());
-        context.subscriptions.push(renameTerminal());
-        context.subscriptions.push(reloadTerminals());
-
-        for (let i = 1; i <= MAX_TERMINALS; i++) {
-            context.subscriptions.push(toggleTerminal(i));
-        }
-
-        context.subscriptions.push(
-            window.onDidCloseTerminal(onDidCloseTerminal),
-        );
-
-        if ("onDidOpenTerminal" in window) {
-            context.subscriptions.push(
-                window.onDidOpenTerminal(onDidOpenTerminal),
-            );
-        }
-
-        context.subscriptions.push(
-            window.onDidChangeActiveTerminal(onDidChangeActiveTerminal),
-        );
+        registerContextMenuCommands();
+        registerSubscriptions(context);
 
         if (defaultTerminals?.length) {
             try {
