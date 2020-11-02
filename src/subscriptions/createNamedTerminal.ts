@@ -1,4 +1,4 @@
-import { commands, window, workspace, WorkspaceFolder } from "vscode";
+import { commands, window, workspace } from "vscode";
 import common, { MAX_TERMINALS } from "../common";
 import { StatusBarTerminal } from "../statusBarTerminal";
 
