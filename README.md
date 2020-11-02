@@ -25,9 +25,16 @@ Settings that can be keybound in your [keybindings.json](hsttps://code.visualstu
 
 This extension provides the following settings:
 
-`tabulous.activeTabColor`: The colour of the active tab. This **must** be a valid css colour
-
-`tabulous.defaultTerminals`: Default terminal settings for automatically opening terminals when VS Code opens. Best used inside .code-workspace settings
+- `tabulous.activeTabColor`: The colour of the active tab. This **must** be a valid css colour
+- `tabulous.touchBar`: Enable touch bar support (macOS only).
+  - **Default:** true
+- `tabulous.createNamedTerminalTouchBarButton`: Enable Create Named Terminal touch bar button.
+  - **Default:** true
+- `tabulous.renameTerminalTouchBarButton`: Enable Rename Terminal touch bar button.
+  - **Default:** true
+- `tabulous.reloadDefaultTerminalsTouchBarButton`: Enable Rename Default Terminals touch bar button.
+  - **Default:** true
+- `tabulous.defaultTerminals`: Default terminal settings for automatically opening terminals when VS Code opens. Best used inside .code-workspace settings
 
 `tabulous.defaultTerminals` example:
 

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="60"
+   height="60"
+   viewBox="0 0 60 60"
+   fill="none"
+   version="1.1"
+   id="svg58"
+   sodipodi:docname="rename-terminal.svg"
+   inkscape:export-filename="/Users/ben.wildeman/code/vscode-tabulous/icons/rename-terminal.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)">
+  <metadata
+     id="metadata64">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs62" />
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1680"
+     inkscape:window-height="925"
+     id="namedview60"
+     showgrid="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-grids="true"
+     inkscape:zoom="7.2796234"
+     inkscape:cx="3.6003613"
+     inkscape:cy="20.313176"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2">
+    <inkscape:grid
+       type="xygrid"
+       id="grid126" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Layer 1"
+     style="display:none">
+    <rect
+       style="display:inline;fill:#ffaaaa;fill-opacity:1;stroke:none;stroke-width:3.59259"
+       id="rect968"
+       width="44"
+       height="44"
+       x="8"
+       y="8.1644459" />
+    <rect
+       style="fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:3.6"
+       id="rect977"
+       width="36"
+       height="36"
+       x="12"
+       y="12" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline;opacity:1">
+    <g
+       style="fill:#ffffff"
+       id="g1056"
+       transform="matrix(3.0857143,0,0,3.0857143,-0.3428572,10.752034)">
+      <path
+         id="path1045"
+         fill="#424242"
+         d="m 4.00008,5.7071 0.7071,-0.70711 3.53554,3.53554 -0.70711,0.7071 -3e-5,-2e-5 L 4.70711,12.0711 4,11.364 6.82848,8.5355 Z"
+         clip-rule="evenodd"
+         fill-rule="evenodd"
+         style="fill:#ffffff"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;"
+       x="40"
+       y="17"
+       id="text1230"><tspan
+         sodipodi:role="line"
+         id="tspan1228"
+         x="40"
+         y="17" /></text>
+    <path
+       sodipodi:nodetypes="ccccccc"
+       style="display:inline;opacity:1;fill:#ffffff;stroke-width:3.33292"
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="M 47.989267,44.91233 48,48 l -3.599936,-2.2e-5 -2.6e-5,-1.09e-4 -14.400047,4.3e-5 9e-6,-3.085706 c 5.996424,7.3e-5 11.992845,0.0012 17.989268,-0.0019 z"
+       fill="#424242"
+       id="path1045-5" />
+    <g
+       transform="translate(33,11)"
+       id="g115"
+       style="fill:#ffffff">
+      <path
+         style="fill:#ffffff"
+         d="M 13.23,1 H 11.77 L 3.52002,9.25 3.35999,9.46997 1,13.59 2.41003,15 6.53003,12.64 6.75,12.48 15,4.22998 V 2.77002 Z M 2.41003,13.59 3.92004,10.59 5.37,12.04 Z m 3.82996,-2.06 -1.77002,-1.76999 8.00003,-8 1.77,1.77002 z"
+         fill="#424242"
+         id="path104" />
+    </g>
+  </g>
+</svg>

@@ -2,7 +2,7 @@
   "name": "tabulous",
   "displayName": "Tabulous - Terminal Tabs",
   "description": "Adds tabs for each terminal process to the status bar",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "publisher": "bwildeman",
   "icon": "images/icon.png",
   "bugs": {
@@ -36,6 +36,26 @@
           "type": "string",
           "default": "yellow",
           "description": "Active tab color. Must be a valid css color"
+        },
+        "tabulous.touchBar": {
+          "type": "boolean",
+          "description": "Enable touch bar support (macOS only)",
+          "default": true
+        },
+        "tabulous.createNamedTerminalTouchBarButton": {
+          "type": "boolean",
+          "description": "Enable Create Named Terminal touch bar button",
+          "default": true
+        },
+        "tabulous.renameTerminalTouchBarButton": {
+          "type": "boolean",
+          "description": "Enable Rename Terminal touch bar button",
+          "default": true
+        },
+        "tabulous.reloadDefaultTerminalsTouchBarButton": {
+          "type": "boolean",
+          "description": "Enable Reload Default Terminals touch bar button",
+          "default": true
         },
         "tabulous.defaultTerminals": {
           "type": "array",
@@ -72,15 +92,18 @@
       },
       {
         "command": "tabulous.createNamedTerminal",
-        "title": "Tabulous: Create named terminal"
+        "title": "Tabulous: Create named terminal",
+        "icon": "./icons/create-named-terminal.png"
       },
       {
         "command": "tabulous.renameTerminal",
-        "title": "Tabulous: Rename terminal"
+        "title": "Tabulous: Rename terminal",
+        "icon": "./icons/rename-terminal.png"
       },
       {
         "command": "tabulous.reloadDefaultTerminals",
-        "title": "Tabulous: Reload default terminals"
+        "title": "Tabulous: Reload default terminals",
+        "icon": "./icons/reload-default-terminals.png"
       },
       {
         "command": "tabulous.showTerminal1",
@@ -122,7 +145,26 @@
         "command": "tabulous.showTerminal10",
         "title": "Tabulous: Show terminal #10"
       }
-    ]
+    ],
+    "menus": {
+      "touchBar": [
+        {
+          "command": "tabulous.createNamedTerminal",
+          "group": "tabulous@1",
+          "when": "config.tabulous.touchBar && config.tabulous.createNamedTerminalTouchBarButton"
+        },
+        {
+          "command": "tabulous.renameTerminal",
+          "group": "tabulous@2",
+          "when": "config.tabulous.touchBar && config.tabulous.renameTerminalTouchBarButton"
+        },
+        {
+          "command": "tabulous.reloadDefaultTerminals",
+          "group": "tabulous@3",
+          "when": "config.tabulous.touchBar && config.tabulous.reloadDefaultTerminalsTouchBarButton"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "webpack --mode production",
