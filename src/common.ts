@@ -1,7 +1,7 @@
 import { StatusBarTerminal } from "./statusBarTerminal";
 import { Common, DefaultTerminal } from "./types";
 
-export const MAX_TERMINALS = 10;
+export const MAX_TERMINALS = 15;
 
 const common: Common = {
     loaded: false,
